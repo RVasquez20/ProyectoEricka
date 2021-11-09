@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author ghostman
+ * @author ericka_gonzalez
  */
 public class Menus {
 
