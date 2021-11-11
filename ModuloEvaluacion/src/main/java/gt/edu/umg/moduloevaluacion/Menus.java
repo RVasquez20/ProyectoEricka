@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gt.edu.umg.modulomantenimiento;
+package gt.edu.umg.moduloevaluacion;
 
 import java.util.Scanner;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -12,35 +13,66 @@ import java.util.Scanner;
  */
 public class Menus {
 
-    public Scanner datos = new Scanner(System.in);
+    private Scanner datos = new Scanner(System.in);
 
-    public Menus() {
-    }
+    public Semaphore semaforo;
 
+    public Menus(Semaphore semaforo) {
+        this.semaforo = semaforo;
+    } 
     public void menuInicio() {
-
-        Preguntas pregunta = new Preguntas();
+        Preguntas pregunta=new Preguntas(semaforo);
         String opcionElejida = "";
         System.out.println("********************");
         System.out.println("*  Menu Principal  *");
         System.out.println("********************");
-        System.out.println("* 1).Ver Preguntas *");
-        System.out.println("* 2).Nueva Pregunta*");
-        System.out.println("*      S).Exit     *");
+        System.out.println("*1)BASIC_COMMANDS  *");
+        System.out.println("*2)SHELL_SCRIPTS   *");
+        System.out.println("*3)SECURE_SHELL    *");
+        System.out.println("*4)POSIX_SEMAPHORES*");
+        System.out.println("*5)MAVEN           *");
+        System.out.println("*6)JAVA_THREADS    *");
+        System.out.println("*7)DOCKERS         *");
+        System.out.println("*8).Exit           *");
         System.out.println("********************");
         opcionElejida = datos.nextLine();
         switch (opcionElejida.charAt(0)) {
             case '1': {
-                pregunta.mostrarPreguntas();
+                pregunta.procesoEvaluacion("BASIC_COMMANDS");
                 menuInicio();
                 break;
             }
             case '2': {
-                pregunta.nuevaPregunta();
+ pregunta.procesoEvaluacion("SHELL_SCRIPTS");
                 menuInicio();
                 break;
             }
-            case 'S': {
+            case '3': {
+ pregunta.procesoEvaluacion("SECURE_SHELL");
+                menuInicio();
+                break;
+            }
+            case '4': {
+ pregunta.procesoEvaluacion("POSIX_SEMAPHORES");
+                menuInicio();
+                break;
+            }
+            case '5': {
+ pregunta.procesoEvaluacion("MAVEN");
+                menuInicio();
+                break;
+            }
+            case '6': {
+ pregunta.procesoEvaluacion("JAVA_THREADS");
+                menuInicio();
+                break;
+            }
+            case '7': {
+ pregunta.procesoEvaluacion("DOCKERS");
+                menuInicio();
+                break;
+            }
+            case '8': {
                 System.exit(0);
                 break;
             }
@@ -52,57 +84,4 @@ public class Menus {
         }
     }
 
-    public String menuCategorias() {
-        int catSeleccionada = 0;
-        String categoria="";
-        System.out.println("********************");
-        System.out.println("*  Menu Categorias *");
-        System.out.println("********************");
-        System.out.println("*1)BASIC_COMMANDS  *");
-        System.out.println("*2)SHELL_SCRIPTS   *");
-        System.out.println("*3)SECURE_SHELL    *");
-        System.out.println("*4)POSIX_SEMAPHORES*");
-        System.out.println("*5)MAVEN           *");
-        System.out.println("*6)JAVA_THREADS    *");
-        System.out.println("*7)DOCKERS         *");
-        System.out.println("********************");
-        catSeleccionada = datos.nextInt();
-        datos.nextLine();
-        switch(catSeleccionada){
-            case 1:{
-                categoria = "BASIC_COMMANDS";
-                break;
-            }
-            case 2:{
-                categoria = "SHELL_SCRIPTS";
-                break;
-            }
-            case 3:{
-                categoria = "SECURE_SHELL";
-                break;
-            }
-            case 4:{
-                categoria= "POSIX_SEMAPHORES";
-                break;
-            }
-            case 5:{
-                categoria= "MAVEN";
-                break;
-            }
-            case 6:{
-                categoria= "JAVA_THREADS";
-                break;
-            }
-            case 7:{
-                categoria= "DOCKERS";
-                break;
-            }
-            default:{
-                System.out.println("Categoria no disponible Elija nuevamente...");
-                menuCategorias();
-                break;
-            }
-        }
-        return categoria;
-    }
 }
