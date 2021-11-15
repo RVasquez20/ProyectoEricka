@@ -56,7 +56,6 @@ public class Preguntas {
             bffPreguntas.close();
             //se llama a la funcion que servira para elegir las preguntas y que llamara a su vez al proceso
             //de respuesta
-            System.out.println(numeroLineas);
             seleccionAleatoriaPreguntas();
         } catch (FileNotFoundException ex) {
             System.out.println("Error -->" + ex.getMessage() + " Hable con un Catedratico para\n que Agrege"
@@ -67,7 +66,6 @@ public class Preguntas {
     }
 
     public void seleccionAleatoriaPreguntas() {
-        System.out.println("aleatiorio");
         while (numeroPreguntas.size() != 3) {
             
             int aleatorio = (int)(Math.random() * numeroLineas.size());
