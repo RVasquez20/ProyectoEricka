@@ -17,33 +17,44 @@ public class Menus {
     public Menus() {
     }
 
+    /**
+     * Este proceso es el menuInicio, como su nombre lo indica es el menu en el
+     * cual se podra seleccionar la opcion que desee, se podra ver todas las
+     * preguntas asi mismo se podra aniadir una pregunta nueva con su respectiva
+     * categoria y se podra salir del programa. Si en dado caso se selecciona
+     * una opcion no valida el programa se lo indicara y retornara al menuInicio
+     */
     public void menuInicio() {
 
         Preguntas pregunta = new Preguntas();
         String opcionElejida = "";
         System.out.println("********************");
-        System.out.println("*  Menu Principal  *");
+        System.out.println("*    Menu Inicio   *");
         System.out.println("********************");
-        System.out.println("* 1).Ver Preguntas *");
-        System.out.println("* 2).Nueva Pregunta*");
-        System.out.println("*      S).Exit     *");
+        System.out.println("* 1.Ver Preguntas  *");
+        System.out.println("* 2.Nueva Pregunta *");
+        System.out.println("*      S).Salir    *");
         System.out.println("********************");
         opcionElejida = datos.nextLine();
         switch (opcionElejida.charAt(0)) {
+            //Muestra el listado de preguntas, y retorna al menuInicio
             case '1': {
                 pregunta.mostrarPreguntas();
                 menuInicio();
                 break;
             }
+            //Permite agregar una nueva pregunta y retorna al menuInicio
             case '2': {
                 pregunta.nuevaPregunta();
                 menuInicio();
                 break;
             }
+            //Sale del Programa
             case 'S': {
                 System.exit(0);
                 break;
             }
+            //Si la opcion no es valida le informa y retorna al menuInicio
             default: {
                 System.out.println("Opcion No Disponible Elija Nuevamente");
                 menuInicio();
@@ -52,9 +63,16 @@ public class Menus {
         }
     }
 
+    /**
+     * Este menuCategorias tiene la funcionalidad de permitir al profesor
+     * seleccionar la categoria que desea para la pregunta a agregar.
+     *
+     * @return categoria. Retorna la categoria seleccionada por el profesor como
+     * un String.
+     */
     public String menuCategorias() {
         int catSeleccionada = 0;
-        String categoria="";
+        String categoria = "";
         System.out.println("********************");
         System.out.println("*  Menu Categorias *");
         System.out.println("********************");
@@ -68,36 +86,36 @@ public class Menus {
         System.out.println("********************");
         catSeleccionada = datos.nextInt();
         datos.nextLine();
-        switch(catSeleccionada){
-            case 1:{
+        switch (catSeleccionada) {
+            case 1: {
                 categoria = "BASIC_COMMANDS";
                 break;
             }
-            case 2:{
+            case 2: {
                 categoria = "SHELL_SCRIPTS";
                 break;
             }
-            case 3:{
+            case 3: {
                 categoria = "SECURE_SHELL";
                 break;
             }
-            case 4:{
-                categoria= "POSIX_SEMAPHORES";
+            case 4: {
+                categoria = "POSIX_SEMAPHORES";
                 break;
             }
-            case 5:{
-                categoria= "MAVEN";
+            case 5: {
+                categoria = "MAVEN";
                 break;
             }
-            case 6:{
-                categoria= "JAVA_THREADS";
+            case 6: {
+                categoria = "JAVA_THREADS";
                 break;
             }
-            case 7:{
-                categoria= "DOCKERS";
+            case 7: {
+                categoria = "DOCKERS";
                 break;
             }
-            default:{
+            default: {
                 System.out.println("Categoria no disponible Elija nuevamente...");
                 menuCategorias();
                 break;

@@ -13,6 +13,10 @@ import java.util.logging.Logger;
  * @author ericka_gonzalez
  */
 public class Inicial {
+    /**
+     * Este proceso se encarga de inicializar el semaforo disponible, asi mismo
+     * crea e inicia el hilo llamado reporte, y luego muestra el menuInicio.
+     */
     public static void main(String[] args) {
         Semaphore semaforo = new Semaphore(1);
         

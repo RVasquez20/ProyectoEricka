@@ -21,9 +21,15 @@ import java.util.logging.Logger;
 public class Preguntas {
 
     public Scanner datos = new Scanner(System.in);
-    public final String rutaPreguntas = "/home/ghostman/volume4/Preguntas.csv";
+    public final String rutaPreguntas = "/usr/src/ProyectoFinal/Datos/preguntas.txt";
     private String categoriaPreguntas, preguntaNueva;
 
+    /**
+     * Este Proceso se encarga de verificar si el archivo existe , sino existe
+     * pedira ingresar una pregunta para poder generarlo, luego se encargara de
+     * leer todo el archivo de preguntas y mostrar un listado con cada una de
+     * ellas incluyendo el numero de pregunta, la categoria y la misma pregunta.
+     */
     public void mostrarPreguntas() {
         File preguntasArchivo = new File(rutaPreguntas);
         if (!preguntasArchivo.exists()) {
@@ -45,41 +51,58 @@ public class Preguntas {
                 bffPreguntas.close();
                 archivoPreguntas.close();
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(Preguntas.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error :"+ex);
             } catch (IOException ex) {
-                Logger.getLogger(Preguntas.class.getName()).log(Level.SEVERE, null, ex);
+                   System.out.println("Error :"+ex);
             }
 
         }
     }
 
+    /**
+     * Este proceso se encargara de verificar si el archivo existe, si en dado
+     * caso el archivo no existe lo genera, luego se muestra el menu con las
+     * categorias disponibles, luego de seleccionar la deseada el profesor
+     * escribira la pregunta y luego se enviaran los datos a la funcion
+     * agregarPreguntaNueva.
+     */
     public void nuevaPregunta() {
-       File preguntasArchivo = new File(rutaPreguntas);
+        File preguntasArchivo = new File(rutaPreguntas);
         if (!preguntasArchivo.exists()) {
-           try {
-               preguntasArchivo.createNewFile();
-           } catch (IOException ex) {
-               Logger.getLogger(Preguntas.class.getName()).log(Level.SEVERE, null, ex);
-           }
+            try {
+                preguntasArchivo.createNewFile();
+            } catch (IOException ex) {
+                   System.out.println("Error :"+ex);
+            }
         } else {
-        
-            Menus categoria=new Menus();
-            categoriaPreguntas=categoria.menuCategorias();
+
+            Menus categoria = new Menus();
+            categoriaPreguntas = categoria.menuCategorias();
             System.out.println("Ingrese su nueva Pregunta:");
-            preguntaNueva=datos.nextLine();
-            agregarPreguntaNueva(preguntasArchivo,categoriaPreguntas,preguntaNueva);
-        } 
+            preguntaNueva = datos.nextLine();
+            agregarPreguntaNueva(preguntasArchivo, categoriaPreguntas, preguntaNueva);
+        }
     }
-    
-    public void agregarPreguntaNueva(File archivo,String categoria,String pregunta){
+
+    /**
+     * Este Proceso recibe 3 parametros los cuales son el archivo de preguntas,
+     * la categoria previamente seleccionada, y la pregunta ingresada.
+     *
+     * @param archivo
+     * @param categoria
+     * @param pregunta Luego se encarga de escribirlo con el formato
+     * correspondiente en el archivo de preguntas, posteriormente mostrara un
+     * mensaje informando el agregado realizado.
+     */
+    public void agregarPreguntaNueva(File archivo, String categoria, String pregunta) {
         try {
             FileWriter agregarPregunta = new FileWriter(archivo, true);
-             agregarPregunta.append(categoria+"-"+ pregunta + "\n");
+            agregarPregunta.append(categoria + "-" + pregunta + "\n");
+            System.out.println("Pregunta Agregada Correctamente");
             agregarPregunta.flush();
             agregarPregunta.close();
-            System.out.println("Pregunta Agregada Exitosamente :D");  
         } catch (IOException ex) {
-            Logger.getLogger(Preguntas.class.getName()).log(Level.SEVERE, null, ex);
+              System.out.println("Error :"+ex);
         }
     }
 
