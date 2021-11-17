@@ -41,6 +41,7 @@ public class Preguntas {
      */
     public void procesoEvaluacion(String categoria) {
         try {
+            numeroLineas.clear();
             String lineaLeido = "";
             int noPregunta = 0;
             FileReader archivoPreguntas = new FileReader(rutaPreguntas);
@@ -71,6 +72,7 @@ public class Preguntas {
      * iterar sobre cada uno de ellos con un Iterator y llamar al proceso busquedaPregunta.
      */
     public void seleccionAleatoriaPreguntas() {
+        numeroPreguntas.clear();
         while (numeroPreguntas.size() != 3) {
             
             int aleatorio = (int)(Math.random() * numeroLineas.size());
