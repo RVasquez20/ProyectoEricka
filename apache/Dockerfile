@@ -1,2 +1,2 @@
 FROM httpd
-RUN mkdir -p /usr/local/apache2/htdocs/Proyecto/
+RUN mkdir -p /usr/local/apache2/htdocs/proyecto/

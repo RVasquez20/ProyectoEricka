@@ -1,0 +1,6 @@
+docker run -it -v /home/ghostman/volume4/Reporte/:/usr/local/apache2/htdocs/Proyecto/ -p 8080:80  america7361/apache-proyecto 
+
+docker run -it -v /home/ghostman/volume4/Reporte/:/usr/src/ProyectoFinal/Reporte/ -v /home/ghostman/volume4/Datos/:/usr/src/ProyectoFinal/Datos/ america7361/modulo-evaluacion-estudiantes:1.0
+
+docker run -it -v /home/ghostman/volume4/Datos/:/usr/src/ProyectoFinal/Datos/ america7361/modulo-mantenimiento:1.0 
+

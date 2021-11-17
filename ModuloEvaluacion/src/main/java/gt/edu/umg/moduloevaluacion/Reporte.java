@@ -30,14 +30,14 @@ public class Reporte extends Thread {
     }
 
     /**
-     * Este proceso es el encargado desde que se incia el programa de
-     * verficar el semaforo , si esta disponible lo cambia y lee el archivo de 
-     * respuestas, almacena la categoria, y la respuesta, el numero de pregunta se lo envia
-     * a la funcion pregunta para obtener la pregunta correspondiente.
-     * Luego escribe en el archivo Respuestas.html que es el reporte los datos
-     * con el formato correspondiente, luego de terminar con cada uno de los registros
-     * en el archivo de respuestas,libera el semaforo y espera la cantidad de 
-     * 3 segundos para repetir todo el proceso.
+     * Este proceso es el encargado desde que se incia el programa de verficar
+     * el semaforo , si esta disponible lo cambia y lee el archivo de
+     * respuestas, almacena la categoria, y la respuesta, el numero de pregunta
+     * se lo envia a la funcion pregunta para obtener la pregunta
+     * correspondiente. Luego escribe en el archivo Respuestas.html que es el
+     * reporte los datos con el formato correspondiente, luego de terminar con
+     * cada uno de los registros en el archivo de respuestas,libera el semaforo
+     * y espera la cantidad de 3 segundos para repetir todo el proceso.
      */
     @Override
     public void run() {
@@ -61,8 +61,12 @@ public class Reporte extends Thread {
                         + "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n"
                         + "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>"
                         + "</head>\n"
-                        + "<body>\n"
+                        + "<body style=\"\n"
+                        + "    background-color: #e8f8f5;\n"
+                        + "\">\n"
                         + "<div class=\"container\">\n"
+                        + " <br><br><h1>Reporte de Respuestas De Los Estudiantes</h1>\n"
+                        + "<br>\n"
                         + "  <table class=\"table table-danger\">\n"
                         + "    <thead style='background: #B57EDC ;'>"
                         + "      <tr class=\"info\">\n"
@@ -94,9 +98,10 @@ public class Reporte extends Thread {
     }
 
     /**
-     * Esta funcion Recibe como parametro el numero de linea en el cual se encuentra
-     * la pregunta a buscar, lee el archivo de preguntas y busca la linea indicada
-     * para luego retornar la pregunta como tal.
+     * Esta funcion Recibe como parametro el numero de linea en el cual se
+     * encuentra la pregunta a buscar, lee el archivo de preguntas y busca la
+     * linea indicada para luego retornar la pregunta como tal.
+     *
      * @param numeroLinea
      * @return pregunta
      */
